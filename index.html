@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindora Psychology Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="navbar">
+    <h2>🧠 Mindora</h2>
+
+    <div class="nav-buttons">
+        <button onclick="showPage('homePage')">Home</button>
+        <button onclick="showPage('assessmentPage')">Assessment</button>
+        <button onclick="showPage('therapyPage')">Therapy</button>
+        <button onclick="showPage('booksPage')">Books</button>
+        <button onclick="showPage('patientPage')">Patient</button>
+        <button onclick="showPage('appointmentPage')">Appointment</button>
+        <button onclick="showPage('gamePage')">Memory Game</button>
+    </div>
+</nav>
+
+
+<!-- HOME -->
+
+<section id="homePage" class="page active">
+
+    <div class="hero">
+        <div>
+            <p>PSYCHOLOGY & WELLNESS</p>
+
+            <h1>
+                Understand Your Mind.
+                <span>Support Your Well-being.</span>
+            </h1>
+
+            <p>
+                Welcome to Mindora Psychology Wellness Portal.
+                Explore assessment, therapy activities,
+                psychology books and memory games.
+            </p>
+
+            <button
+                class="main-btn"
+                onclick="showPage('assessmentPage')">
+                Start Assessment
+            </button>
+        </div>
+
+        <div class="brain">🧠</div>
+    </div>
+
+
+    <h2 class="center">Explore Mindora</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="emoji">🧠</div>
+            <h3>Mind Assessment</h3>
+            <p>Take a simple wellness assessment.</p>
+            <button onclick="showPage('assessmentPage')">
+                Open
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🧘</div>
+            <h3>Therapy Activities</h3>
+            <p>Explore relaxation activities.</p>
+            <button onclick="showPage('therapyPage')">
+                Open
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="emoji">📚</div>
+            <h3>Psychology Books</h3>
+            <p>Explore psychology resources.</p>
+            <button onclick="showPage('booksPage')">
+                Open
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🎮</div>
+            <h3>Memory Game</h3>
+            <p>Play a simple memory matching game.</p>
+            <button onclick="showPage('gamePage')">
+                Play
+            </button>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ASSESSMENT -->
+
+<section id="assessmentPage" class="page">
+
+    <div class="container">
+
+        <button class="back" onclick="showPage('homePage')">
+            ← Home
+        </button>
+
+        <h1>🧠 Mind Assessment</h1>
+
+        <div id="questionBox"></div>
+
+        <button
+            id="nextButton"
+            class="main-btn"
+            onclick="nextQuestion()">
+            Next
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+</section>
+
+
+<!-- THERAPY -->
+
+<section id="therapyPage" class="page">
+
+    <div class="container">
+
+        <button class="back" onclick="showPage('homePage')">
+            ← Home
+        </button>
+
+        <h1>🧘 Therapy Activities</h1>
+
+        <select id="therapySelect" onchange="showTherapy()">
+
+            <option value="">
+                Select a problem
+            </option>
+
+            <option value="stress">
+                Stress
+            </option>
+
+            <option value="exam">
+                Exam Pressure
+            </option>
+
+            <option value="anxiety">
+                Anxiety / Worry
+            </option>
+
+            <option value="sleep">
+                Sleep
+            </option>
+
+            <option value="anger">
+                Anger
+            </option>
+
+            <option value="focus">
+                Concentration
+            </option>
+
+        </select>
+
+        <div id="therapyBox" class="cards"></div>
+
+    </div>
+
+</section>
+
+
+<!-- BOOKS -->
+
+<section id="booksPage" class="page">
+
+    <div class="container">
+
+        <button class="back" onclick="showPage('homePage')">
+            ← Home
+        </button>
+
+        <h1>📚 Psychology Books</h1>
+
+        <div id="booksBox" class="cards"></div>
+
+    </div>
+
+</section>
+
+
+<!-- BOOK DETAILS - ADDED ONLY FOR BOOK FEATURE -->
+
+<section id="bookDetailsPage" class="page">
+
+    <div class="container">
+
+        <button class="back" onclick="showPage('booksPage')">
+            ← Back to Books
+        </button>
+
+        <h1>📖 Book Details</h1>
+
+        <div id="bookDetailsBox">
+
+            <div class="book-loading">
+
+                <div class="emoji">📚</div>
+
+                <h2>Loading...</h2>
+
+                <p>
+                    Finding information about this book...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PATIENT -->
+
+<section id="patientPage" class="page">
+
+    <div class="container">
+
+        <button class="back" onclick="showPage('homePage')">
+            ← Home
+        </button>
+
+        <h1>👤 Patient Details</h1>
+
+        <div class="form">
+
+            <input
+                id="patientName"
+                placeholder="Patient Name">
+
+            <input
+                id="patientProblem"
+                placeholder="Problem">
+
+            <input
+                id="sessions"
+                type="number"
+                placeholder="Number of Sessions">
+
+            <button
+                class="main-btn"
+                onclick="savePatient()">
+                Save
+            </button>
+
+        </div>
+
+        <div id="patientBox"></div>
+
+    </div>
+
+</section>
+
+
+<!-- APPOINTMENT -->
+
+<section id="appointmentPage" class="page">
+
+    <div class="container">
+
+        <button class="back" onclick="showPage('homePage')">
+            ← Home
+        </button>
+
+        <h1>📅 Appointment</h1>
+
+        <div class="form">
+
+            <input
+                id="appointmentPatient"
+                placeholder="Patient Name">
+
+            <input
+                id="doctor"
+                placeholder="Doctor / Counselor">
+
+            <input
+                id="date"
+                type="date">
+
+            <input
+                id="time"
+                type="time">
+
+            <button
+                class="main-btn"
+                onclick="saveAppointment()">
+                Book Appointment
+            </button>
+
+        </div>
+
+        <div id="appointmentBox"></div>
+
+    </div>
+
+</section>
+
+
+<!-- MEMORY GAME -->
+
+<section id="gamePage" class="page">
+
+    <div class="container">
+
+        <button class="back" onclick="showPage('homePage')">
+            ← Home
+        </button>
+
+        <h1>🎮 Memory Game</h1>
+
+        <p>
+            Moves: <b id="moves">0</b>
+        </p>
+
+        <div id="gameBox" class="game"></div>
+
+        <button
+            class="main-btn"
+            onclick="startGame()">
+            Restart
+        </button>
+
+    </div>
+
+</section>
+
+
+<script src="./script.js"></script>
+
+</body>
+</html>
